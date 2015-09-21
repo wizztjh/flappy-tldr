@@ -73,7 +73,7 @@ function update () {
 
     if (jumpButton.isDown)
     {
-        player.body.velocity.y = -400;
+        player.body.velocity.y = -200;
     }
 
     if (player.body.onFloor() || player.body.touching.down) {
