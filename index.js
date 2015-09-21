@@ -16,6 +16,7 @@ var player;
 var platforms;
 var cursors;
 var jumpButton;
+var velocity=-100;
 
 function create() {
 
@@ -23,20 +24,30 @@ function create() {
 
     game.physics.arcade.enable(player);
 
+    //  Create our Timer
+    timer = game.time.create(false);
+
+    //  Set a TimerEvent to occur after 2 seconds
+    timer.loop(1000, newPlatform, this);
+
+    //  Start the timer running - this is important!
+    //  It won't start automatically, allowing you to hook it to button events and the like.
+    timer.start();
+
     player.body.collideWorldBounds = true;
     player.body.gravity.y  = 500;
     player.body.velocity.x = 100;
 
     platforms = game.add.physicsGroup();
 
-    platforms.create( 500, 150, 'platform');
-    platforms.create(-200, 300, 'platform');
-    platforms.create( 400, 450, 'platform');
-    newPlatform();
+    //platforms.create( 500, 150, 'platform');
+    //platforms.create(-200, 300, 'platform');
+    //platforms.create( 400, 450, 'platform');
 
     //platforms.setAll('body.gravity', );
-    platforms.setAll('body.immovable', true);
-    platforms.setAll('body.gravity.x', -30);
+    //platforms.setAll('body.immovable', true);
+    //platforms.setAll('body.velocity.x', velocity);
+    newPlatform();
     //platforms.setAll('body.immovable.y', true);
 
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -44,8 +55,13 @@ function create() {
 }
 
 function newPlatform() {
-  var randomNum = Math.floor(Math.random() * 500);
-  platforms.create(750, randomNum, 'platform');
+  var randomNum1 = 600-Math.floor(Math.random() * 250);
+  var randomNum2 = -200-Math.floor(Math.random() * 250);
+  //var randomNum2 = 600-Math.floor(Math.random() * 150);
+  platforms.create(750, randomNum1, 'platform');
+  platforms.create(750, randomNum2, 'platform');
+  platforms.setAll('body.immovable', true);
+  platforms.setAll('body.velocity.x', velocity);
 }
 
 function update () {
