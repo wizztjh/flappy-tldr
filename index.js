@@ -54,7 +54,7 @@ function update () {
         player.body.velocity.x = 250;
     }
 
-    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down))
+    if (jumpButton.isDown)
     {
         player.body.velocity.y = -400;
     }
