@@ -50,14 +50,14 @@ function create() {
 
 }
 function queuePlatform() {
-    game.time.events.add(Phaser.Timer.SECOND*10/velocity, newPlatform, this);
+    game.time.events.add(Phaser.Timer.SECOND*100/velocity, newPlatform, this);
 }
 
 function newPlatform() {
   var randomNum1 = 600-Math.floor(Math.random() * 250);
   var randomNum2 = -200-Math.floor(Math.random() * 250);
   //var randomNum2 = 600-Math.floor(Math.random() * 150);
-  velocity = velocity + 10;
+  velocity = velocity + 1;
   platforms.create(750, randomNum1, 'platform');
   platforms.create(750, randomNum2, 'platform');
   platforms.setAll('body.immovable', true);
