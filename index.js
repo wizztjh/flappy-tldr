@@ -8,7 +8,7 @@ function preload() {
     game.load.baseURL = 'http://localhost:8000/assets/';
     game.load.crossOrigin = 'anonymous';
 
-    game.load.image('player', 'sprites/phaser-dude.png');
+    game.load.image('player', 'flappy.png');
     game.load.image('platform', 'pipe.png');
 
 }
