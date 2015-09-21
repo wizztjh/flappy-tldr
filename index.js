@@ -24,19 +24,28 @@ function create() {
     game.physics.arcade.enable(player);
 
     player.body.collideWorldBounds = true;
-    player.body.gravity.y = 500;
+    player.body.gravity.y  = 500;
+    player.body.velocity.x = 100;
 
     platforms = game.add.physicsGroup();
 
     platforms.create( 500, 150, 'platform');
     platforms.create(-200, 300, 'platform');
     platforms.create( 400, 450, 'platform');
+    newPlatform();
 
+    //platforms.setAll('body.gravity', );
     platforms.setAll('body.immovable', true);
+    platforms.setAll('body.gravity.x', -30);
+    //platforms.setAll('body.immovable.y', true);
 
-    cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+}
+
+function newPlatform() {
+  var randomNum = Math.floor(Math.random() * 500);
+  platforms.create(750, randomNum, 'platform');
 }
 
 function update () {
@@ -44,15 +53,6 @@ function update () {
     game.physics.arcade.collide(player, platforms);
 
     player.body.velocity.x = 0;
-
-    if (cursors.left.isDown)
-    {
-        player.body.velocity.x = -250;
-    }
-    else if (cursors.right.isDown)
-    {
-        player.body.velocity.x = 250;
-    }
 
     if (jumpButton.isDown)
     {
