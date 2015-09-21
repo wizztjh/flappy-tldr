@@ -58,6 +58,12 @@ function update () {
     {
         player.body.velocity.y = -400;
     }
+
+    if (player.body.onFloor() || player.body.touching.down) {
+      var text = "YOU DIED! TLDR";
+      var style = { font: "65px Arial", fill: "#ff0044", align: "center" };
+      var t = game.add.text(game.world.centerX-300, 0, text, style);
+    }
 }
 
 function render () {
