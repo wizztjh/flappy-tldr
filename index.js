@@ -16,7 +16,8 @@ var player;
 var platforms;
 var cursors;
 var jumpButton;
-var velocity=-100;
+var velocity=100;
+var timer;
 
 function create() {
 
@@ -26,12 +27,7 @@ function create() {
 
     //  Create our Timer
     timer = game.time.create(false);
-
-    //  Set a TimerEvent to occur after 2 seconds
-    timer.loop(1000, newPlatform, this);
-
-    //  Start the timer running - this is important!
-    //  It won't start automatically, allowing you to hook it to button events and the like.
+    queuePlatform();
     timer.start();
 
     player.body.collideWorldBounds = true;
@@ -53,15 +49,20 @@ function create() {
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 }
+function queuePlatform() {
+    game.time.events.add(Phaser.Timer.SECOND*10/velocity, newPlatform, this);
+}
 
 function newPlatform() {
   var randomNum1 = 600-Math.floor(Math.random() * 250);
   var randomNum2 = -200-Math.floor(Math.random() * 250);
   //var randomNum2 = 600-Math.floor(Math.random() * 150);
+  velocity = velocity + 10;
   platforms.create(750, randomNum1, 'platform');
   platforms.create(750, randomNum2, 'platform');
   platforms.setAll('body.immovable', true);
-  platforms.setAll('body.velocity.x', velocity);
+  platforms.setAll('body.velocity.x', -velocity);
+  queuePlatform();
 }
 
 function update () {
