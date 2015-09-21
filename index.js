@@ -5,11 +5,11 @@ function preload() {
 
     game.stage.backgroundColor = '#85b5e1';
 
-    game.load.baseURL = 'http://examples.phaser.io/assets/';
+    game.load.baseURL = 'http://localhost:8000/assets/';
     game.load.crossOrigin = 'anonymous';
 
     game.load.image('player', 'sprites/phaser-dude.png');
-    game.load.image('platform', 'sprites/platform.png');
+    game.load.image('platform', 'pipe.png');
 
 }
 var player;
@@ -28,9 +28,9 @@ function create() {
 
     platforms = game.add.physicsGroup();
 
-    platforms.create(500, 150, 'platform');
+    platforms.create( 500, 150, 'platform');
     platforms.create(-200, 300, 'platform');
-    platforms.create(400, 450, 'platform');
+    platforms.create( 400, 450, 'platform');
 
     platforms.setAll('body.immovable', true);
 
