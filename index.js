@@ -16,7 +16,7 @@ var player;
 var platforms;
 var cursors;
 var jumpButton;
-var velocity=100;
+var velocity=200;
 var timer;
 
 function create() {
@@ -32,7 +32,7 @@ function create() {
 
     player.body.collideWorldBounds = true;
     player.body.gravity.y  = 500;
-    player.body.velocity.x = 100;
+    player.body.velocity.x = velocity;
 
     platforms = game.add.physicsGroup();
 
@@ -54,13 +54,13 @@ function queuePlatform() {
 }
 
 function newPlatform() {
-  var a = Math.floor(Math.random() * 250);
+  var a = Math.floor(Math.random() * velocity);
   var b = Math.floor(Math.random() * 100);
   var randomNum1 = 600-a;
   var randomNum2 = -200-a-b;
 
   //var randomNum2 = 600-Math.floor(Math.random() * 150);
-  velocity = velocity + 1;
+  velocity = velocity + 3;
   platforms.create(750, randomNum1, 'platform');
   platforms.create(750, randomNum2, 'platform');
   platforms.setAll('body.immovable', true);
