@@ -5,7 +5,7 @@ function preload() {
 
     game.stage.backgroundColor = '#85b5e1';
 
-    game.load.baseURL = 'http://localhost:8000/assets/';
+    game.load.baseURL = '/assets/';
     game.load.crossOrigin = 'anonymous';
 
     game.load.image('player', 'flappy.png');
