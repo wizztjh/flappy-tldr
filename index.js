@@ -54,8 +54,11 @@ function queuePlatform() {
 }
 
 function newPlatform() {
-  var randomNum1 = 600-Math.floor(Math.random() * 250);
-  var randomNum2 = -200-Math.floor(Math.random() * 250);
+  var a = Math.floor(Math.random() * 250);
+  var b = Math.floor(Math.random() * 100);
+  var randomNum1 = 600-a;
+  var randomNum2 = -200-a-b;
+
   //var randomNum2 = 600-Math.floor(Math.random() * 150);
   velocity = velocity + 1;
   platforms.create(750, randomNum1, 'platform');
