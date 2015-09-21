@@ -79,6 +79,7 @@ function update () {
       var text = "YOU DIED! TLDR";
       var style = { font: "65px Arial", fill: "#ff0044", align: "center" };
       var t = game.add.text(game.world.centerX-300, 0, text, style);
+      setTimeout(function(){history.go(0); }, 1000)
     }
 }
 
