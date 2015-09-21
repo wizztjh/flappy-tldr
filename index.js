@@ -70,7 +70,7 @@ function newPlatform() {
 
 function update () {
 
-    game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(player, platforms, collisionHandler, null, this);
 
     player.body.velocity.x = 0;
 
@@ -80,14 +80,19 @@ function update () {
     }
 
     if (player.body.onFloor() || player.body.touching.down) {
-      var text = "YOU DIED! TLDR";
-      var style = { font: "65px Arial", fill: "#ff0044", align: "center" };
-      var t = game.add.text(game.world.centerX-300, 0, text, style);
-      setTimeout(function(){history.go(0); }, 1000)
+      collisionHandler()
     }
 }
 
 function render () {
 
+}
+
+
+function collisionHandler () {
+  var text = "YOU DIED! TLDR";
+  var style = { font: "65px Arial", fill: "#ff0044", align: "center" };
+  var t = game.add.text(game.world.centerX-300, 0, text, style);
+  setTimeout(function(){history.go(0); }, 1000)
 }
 
