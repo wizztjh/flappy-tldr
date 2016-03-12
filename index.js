@@ -6,8 +6,8 @@ function preload() {
     game.stage.backgroundColor = '#85b5e1';
 
     //game.load.baseURL = 'http://localhost:8000/assets/';
-    //game.load.baseURL = 'https://cdn.rawgit.com/wizztjh/flappy-tldr/master/assets/';
-    game.load.baseURL = 'https://rawgit.com/wizztjh/flappy-tldr/master/index.html';
+    game.load.baseURL = 'https://cdn.rawgit.com/wizztjh/flappy-tldr/master/assets/';
+    //game.load.baseURL = 'https://rawgit.com/wizztjh/flappy-tldr/master/index.html';
     game.load.crossOrigin = 'anonymous';
 
     game.load.image('player', 'flappy.png');
